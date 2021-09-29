@@ -4,11 +4,16 @@ from typing import Dict
 from unittest import TestCase
 
 from g3b1_data.entities import EntId, EntTy
+from g3b1_data.model import G3Arg
 from money.data import db
-from money.data.model import ENT_TY_money_owner, ENT_TY_money_accnt
+from money.data.model import ENT_TY_money_owner, ENT_TY_money_accnt, ENT_TY_money_li
 
 
 class Test(TestCase):
+    def test_g3_arg_new(self):
+        g3_arg = G3Arg('cur__src__accnt', 'Accnt', ENT_TY_money_li)
+        print(g3_arg)
+
     def test_sel_ent_ty(self):
         g3r = db.sel_ent_ty(EntId(ENT_TY_money_owner, 1))
         print(g3r.result)

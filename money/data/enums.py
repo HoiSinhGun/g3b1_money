@@ -5,6 +5,7 @@ class Crcy(Enum):
     EUR = 'EUR'
     USD = 'USD'
     VND = 'VND'
+    KZT = 'KZT'
 
     @staticmethod
     def fin(val: str) -> "Crcy":

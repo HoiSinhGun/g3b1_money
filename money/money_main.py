@@ -8,6 +8,7 @@ from g3b1_data import tg_db
 from g3b1_data.entities import EntTy
 from g3b1_log.log import cfg_logger
 from g3b1_serv import tgdata_main, utilities, generic_hdl
+from g3b1_serv.generic_hdl import init_g3_ctx
 from g3b1_serv.utilities import G3Command
 from g3b1_serv.utilities import is_msg_w_cmd
 from money import tg_hdl
@@ -18,18 +19,15 @@ logger = cfg_logger(logging.getLogger(__name__), logging.WARN)
 
 
 def hdl_message(upd: Update, ctx: CallbackContext) -> None:
-    """store message to DB"""
-    G3Context.upd = upd
-    g3_m_str = ctx.bot.username.split('_')[1]
-    if g3_m_str == 'translate':
-        g3_m_str = 'trans'
-    G3Context.g3_m_str = g3_m_str
-    logger.debug(f'Target module: {g3_m_str}')
-    # filter_r_g3cmd(utilities.)
+    """HDL Message"""
+    init_g3_ctx(upd, ctx)
+
     message = upd.effective_message
-    cmd_dct = sel_g3_m(g3_m_str).cmd_dct
+    cmd_dct = sel_g3_m(G3Context.g3_m_str).cmd_dct
     text = message.text
     matched: bool = False
+    if G3Context.g3_m_str == 'money' and text == '.m.':
+        text = '.menu'
     # noinspection PyTypeChecker
     g3_cmd: G3Command = None
     is_command_explicit = True
@@ -48,7 +46,7 @@ def hdl_message(upd: Update, ctx: CallbackContext) -> None:
         pass
     elif text.startswith('.'):
         if text.strip() == '.':
-            latest_cmd = utilities.read_latest_cmd(upd, sel_g3_m(g3_m_str))
+            latest_cmd = utilities.read_latest_cmd(upd, sel_g3_m(G3Context.g3_m_str))
             text = latest_cmd.text
             is_command_explicit = False
             # pass text = utilities
