@@ -73,8 +73,8 @@ def ins_ent_ty(ent: Any) -> G3Result[Any]:
             new_val_dct[f'{k}_id'] = v['id_']
         else:
             new_val_dct[k] = v
-    with eng_MONEY.begin() as con:
-        tbl: Table = md_MONEY.tables[ent.ent_ty().tbl_name]
+    with G3Context.eng.begin() as con:
+        tbl: Table = G3Context.md.tables[ent.ent_ty().tbl_name]
         stmnt = (insert(tbl).
                  values(new_val_dct))
         rs: CursorResult = con.execute(stmnt)
