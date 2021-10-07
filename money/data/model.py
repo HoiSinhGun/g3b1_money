@@ -120,7 +120,8 @@ ENT_TY_li.extend(ENT_TY_money_li)
 ELE_TY_crcy = EleTy(id_='crcy', descr='CUR', ui_len=3)
 ELE_TY_src__accnt_id = EleTy(id_='src__accnt_id', descr='Src Accnt')
 ELE_TY_trg__accnt_id = EleTy(id_='trg__accnt_id', descr='Trg Accnt')
-ELE_TY_li.extend([ELE_TY_crcy, ELE_TY_trg__accnt_id, ELE_TY_src__accnt_id])
+
+ELE_TY_money_li = [ELE_TY_crcy, ELE_TY_trg__accnt_id, ELE_TY_src__accnt_id]
 
 ELE_TY_money_owner_id = EleTy(id_='owner_id', descr='Owner', ent_ty=ENT_TY_money_owner)
 ELE_TY_money_categ_id = EleTy(id_='categ_id', descr='Category', ent_ty=ENT_TY_money_categ)
@@ -128,5 +129,8 @@ ELE_TY_money_accnt_id = EleTy(id_='accnt_id', descr='Account', ent_ty=ENT_TY_mon
 ELE_TY_money_accnt_bal_id = EleTy(id_='accnt_bal_id', descr='Accnt Balance', ent_ty=ENT_TY_money_accnt_bal)
 ELE_TY_money_id = EleTy(id_='money_id', descr='Money', ent_ty=ENT_TY_money)
 ELE_TY_money_mp_id = EleTy(id_='money_mp_id', descr='Money', ent_ty=ENT_TY_money_mp)
-ELE_TY_li.extend([ELE_TY_money_owner_id, ELE_TY_money_categ_id, ELE_TY_money_accnt_id, ELE_TY_money_accnt_bal_id,
-                  ELE_TY_money_id, ELE_TY_money_mp_id])
+
+ELE_TY_money_li.extend([ELE_TY_money_owner_id, ELE_TY_money_categ_id, ELE_TY_money_accnt_id, ELE_TY_money_accnt_bal_id,
+                        ELE_TY_money_id, ELE_TY_money_mp_id])
+
+ELE_TY_li.extend(ELE_TY_money_li)

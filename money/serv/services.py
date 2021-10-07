@@ -4,12 +4,12 @@ from g3b1_cfg.tg_cfg import G3Context
 from g3b1_data.elements import ELE_TY_amnt, ELE_TY_descr
 from g3b1_serv import utilities
 from g3b1_serv.generic_mdl import TgTable, TgColumn, TableDef
-from g3b1_serv.utilities import row_li_2_tbl
 from g3b1_ui.model import TgUIC
 from money.data.db import ins_ent_ty, ins_money_mp, fin_money_mp
 from money.data.enums import Crcy
 from money.data.model import Owner, Accnt, Categ, AccntBal, MoneyMp, Money, ELE_TY_money_categ_id, \
     ELE_TY_crcy
+from sql_utils import row_li_2_tbl
 
 
 def owner_01(bkey: str) -> Owner:

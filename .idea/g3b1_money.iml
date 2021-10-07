@@ -4,8 +4,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="Python 3.9" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="g3b1_tgdata" />
-    <orderEntry type="module" module-name="g3b1_subscribe" />
     <orderEntry type="module" module-name="sandbox" />
   </component>
 </module>

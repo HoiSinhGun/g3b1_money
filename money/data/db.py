@@ -5,6 +5,7 @@ from typing import Any, Dict
 from sqlalchemy import Table, select, insert, or_
 from sqlalchemy.engine import Result, Row, CursorResult, Connection
 
+from elements import EleVal
 from g3b1_cfg.tg_cfg import G3Context
 from g3b1_data import settings
 from g3b1_data.entities import ET, EntId, EntTy
@@ -15,10 +16,10 @@ from money.data.integrity import from_row_any, fetch_fk_ent
 from money.data.model import MoneyMp, ENT_TY_money, ENT_TY_money_mp, Money, Accnt
 
 
-def read_setting(setng_dct: dict[str, ...]) -> G3Result:
+def read_setting(setng_dct: dict[str, ...]) -> G3Result[EleVal]:
     with eng_MONEY.connect() as con:
-        g3r = settings.read_setting(con, md_MONEY, setng_dct)
-        return g3r
+        ele_val = settings.read_setting(con, md_MONEY, setng_dct)
+        return G3Result(0, ele_val)
 
 
 def iup_setting(setng_dct: dict[str, ...]) -> G3Result:
